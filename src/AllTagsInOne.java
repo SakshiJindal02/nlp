@@ -13,58 +13,68 @@ public class AllTagsInOne {
     private static final String PROPERTY_TYPE_FILTER = "<START:PROPERTY_TYPE> ";
     private static final String PRICE_FILTER         = "<START:PRICE> ";
     private static final String FILENAME             = "/home/anmol/trainingDataSet2.txt";
+    private static final String POSTEDBY_FILTER            = "<START:POSTEDBY> ";
     
-    //{ "3", "BHK", "apartment", "under", "10000", "in", "Chembur Mumbai" }
-    public static String type1LocalityCityQuery(String locality, String bhk, String city, String propertyType, String price) {
+    //{ "3", "BHK", "apartment", "under", "10000", "in", "Chembur Mumbai", "by", "broker" }
+    public static String type1LocalityCityQuery(String locality, String bhk, String city, String propertyType, String price, String postedBy) {
         StringBuilder text = new StringBuilder();
         
         addFilter(BHK_FILTER, bhk, text);
         addFilter(PROPERTY_TYPE_FILTER, propertyType, text);
-        addFilter(PRICE_FILTER, price, text);        
+        addFilter(PRICE_FILTER, price, text);             
+        text.append(" in ");        
         String locality_city = locality + " " + city;
-        addFilter(LOCALITY_FILTER, locality_city, text);        
+        addFilter(LOCALITY_FILTER, locality_city, text);       
+        text.append(" by ");  
+        addFilter(POSTEDBY_FILTER, postedBy, text);        
         return text.toString();
     }
     
-    //{ "3", "BHK", "apartment", "under", "10000", "in", "Chembur" }
-    public static String type1CityQuery(String locality, String bhk, String city, String propertyType, String price) {
+    //{ "3", "BHK", "apartment", "under", "10000", "in", "Chembur" , "by", "broker"}
+    public static String type1CityQuery(String locality, String bhk, String city, String propertyType, String price, String postedBy) {
         StringBuilder text = new StringBuilder();
 
         addFilter(BHK_FILTER, bhk, text);
         addFilter(PROPERTY_TYPE_FILTER, propertyType, text);
         addFilter(PRICE_FILTER, price, text);        
         text.append(" in ");        
-        addFilter(CITY_FILTER, city, text);
+        addFilter(CITY_FILTER, city, text);    
+        text.append(" by ");  
+        addFilter(POSTEDBY_FILTER, postedBy, text);    
         return text.toString();
     }
     
-    //{ "3", "BHK", "apartment", "under", "10000", "in", "Mumbai" }
-    public static String type1LocalityQuery(String locality, String bhk, String city, String propertyType, String price) {
+    //{ "3", "BHK", "apartment", "under", "10000", "in", "Mumbai" , "by", "broker"}
+    public static String type1LocalityQuery(String locality, String bhk, String city, String propertyType, String price, String postedBy) {
         StringBuilder text = new StringBuilder();
         
         addFilter(BHK_FILTER, bhk, text);
         addFilter(PROPERTY_TYPE_FILTER, propertyType, text);
         addFilter(PRICE_FILTER, price, text);        
         text.append(" in ");        
-        addFilter(LOCALITY_FILTER, locality, text);
+        addFilter(LOCALITY_FILTER, locality, text);    
+        text.append(" by ");  
+        addFilter(POSTEDBY_FILTER, postedBy, text);    
         return text.toString();
     }
 
-    //{ "under", "1000000/1cr", "3", "BHK", "apartment", "in", "Mumbai" }
-    public static String type2CityQuery(String locality, String bhk, String city, String propertyType, String price) {
+    //{ "under", "1000000/1cr", "3", "BHK", "apartment", "in", "Mumbai" , "by", "broker"}
+    public static String type2CityQuery(String locality, String bhk, String city, String propertyType, String price, String postedBy) {
         StringBuilder text = new StringBuilder();
         
         addFilter(PRICE_FILTER, price, text);
         addFilter(BHK_FILTER, bhk, text);
         addFilter(PROPERTY_TYPE_FILTER, propertyType, text);        
         text.append(" in ");        
-        addFilter(CITY_FILTER, locality, text);
+        addFilter(CITY_FILTER, locality, text);    
+        text.append(" by ");  
+        addFilter(POSTEDBY_FILTER, postedBy, text);    
         return text.toString();
     }
     
     //////////////////////////////////
-    //{ "apartment", "under", "1000000/1cr", "having", "3", "bedroom", "in", "Mumbai" }
-    public static String type3CityQuery(String locality, String bhk, String city, String propertyType, String price) {
+    //{ "apartment", "under", "1000000/1cr", "having", "3", "bedroom", "in", "Mumbai" , "by", "broker"}
+    public static String type3CityQuery(String locality, String bhk, String city, String propertyType, String price, String postedBy) {
         StringBuilder text = new StringBuilder();
 
         addFilter(PROPERTY_TYPE_FILTER, propertyType, text);
@@ -72,13 +82,15 @@ public class AllTagsInOne {
         text.append(" having ");
         addFilter(BHK_FILTER, bhk, text);        
         text.append(" in ");        
-        addFilter(CITY_FILTER, locality, text);
+        addFilter(CITY_FILTER, locality, text);    
+        text.append(" by ");  
+        addFilter(POSTEDBY_FILTER, postedBy, text);    
         return text.toString();
     }
     
     //////////////////////////////////
-    //{ "apartment", "having", "3", "bedroom", "under", "1000000/1cr", "in", "Mumbai" }
-    public static String type4CityQuery(String locality, String bhk, String city, String propertyType, String price) {
+    //{ "apartment", "having", "3", "bedroom", "under", "1000000/1cr", "in", "Mumbai", "by", "broker" }
+    public static String type4CityQuery(String locality, String bhk, String city, String propertyType, String price, String postedBy) {
         StringBuilder text = new StringBuilder();
         
         addFilter(PROPERTY_TYPE_FILTER, propertyType, text);        
@@ -86,13 +98,15 @@ public class AllTagsInOne {
         addFilter(BHK_FILTER, bhk, text);        
         addFilter(PRICE_FILTER, price, text);
         text.append(" in ");
-        addFilter(CITY_FILTER, locality, text);
+        addFilter(CITY_FILTER, locality, text);    
+        text.append(" by ");  
+        addFilter(POSTEDBY_FILTER, postedBy, text);    
         return text.toString();
     }
     
     //////////////////////////////////
-    //{ "apartment", "in", "Mumbai", "having", "3", "bedroom", "under", "1000000/1cr"}
-    public static String type5CityQuery(String locality, String bhk, String city, String propertyType, String price) {
+    //{ "apartment", "in", "Mumbai", "having", "3", "bedroom", "under", "1000000/1cr", "by", "broker"}
+    public static String type5CityQuery(String locality, String bhk, String city, String propertyType, String price, String postedBy) {
         StringBuilder text = new StringBuilder();
 
         addFilter(PROPERTY_TYPE_FILTER, propertyType, text);
@@ -100,7 +114,9 @@ public class AllTagsInOne {
         addFilter(CITY_FILTER, locality, text);
         text.append(" having ");
         addFilter(BHK_FILTER, bhk, text);
-        addFilter(PRICE_FILTER, price, text);        
+        addFilter(PRICE_FILTER, price, text);      
+        text.append(" by ");  
+        addFilter(POSTEDBY_FILTER, postedBy, text);          
         return text.toString();
     }
 
@@ -177,6 +193,10 @@ public class AllTagsInOne {
         bhkList.add("3BHK");
         bhkList.add("3 BHK");
 
+        List<String> postedByList = new ArrayList<>();
+
+        postedByList.add("owner");
+
         List<Integer> buyList = new ArrayList<>();
         
         List<String> priceList = new ArrayList<>();
@@ -216,13 +236,16 @@ public class AllTagsInOne {
                     for (String city : cityList) {
                         for (String property : propertyTypeList) {
                             for(String price : priceList) {
-                                writeInFile(type1LocalityCityQuery(locality, bhk, city, property, price), bw);
-                                writeInFile(type1CityQuery(locality, bhk, city, property, price), bw);
-                                writeInFile(type1LocalityQuery(locality, bhk, city, property, price), bw);
-                                writeInFile(type2CityQuery(locality, bhk, city, property, price), bw);
-                                writeInFile(type3CityQuery(locality, bhk, city, property, price), bw);
-                                writeInFile(type4CityQuery(locality, bhk, city, property, price), bw);
-                                writeInFile(type5CityQuery(locality, bhk, city, property, price), bw);
+                                for(String postedBy : postedByList) {
+                                    writeInFile(type1LocalityCityQuery(locality, bhk, city, property, price, postedBy), bw);
+                                    writeInFile(type1CityQuery(locality, bhk, city, property, price, postedBy), bw);
+                                    writeInFile(type1LocalityQuery(locality, bhk, city, property, price, postedBy), bw);
+                                    writeInFile(type2CityQuery(locality, bhk, city, property, price, postedBy), bw);
+                                    writeInFile(type3CityQuery(locality, bhk, city, property, price, postedBy), bw);
+                                    writeInFile(type4CityQuery(locality, bhk, city, property, price, postedBy), bw);
+                                    writeInFile(type5CityQuery(locality, bhk, city, property, price, postedBy), bw);
+                                }
+                                
                             }
 
 
@@ -266,6 +289,8 @@ public class AllTagsInOne {
         try {
             bw.write(content);
             bw.write("\n");
+            System.out.println("\n done");
+            
 
         }
         catch (IOException e) {
