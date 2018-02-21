@@ -195,7 +195,7 @@ public class AllTagsInOne {
 
         List<String> postedByList = new ArrayList<>();
 
-        bhkList.add("broker");
+        postedByList.add("owner");
 
         List<Integer> buyList = new ArrayList<>();
         
