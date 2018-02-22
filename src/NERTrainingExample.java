@@ -65,7 +65,7 @@ public class NERTrainingExample {
 
         // saving the model to "ner-custom-model.bin" file
         try {
-            File output = new File("ner-custom-all-tags.bin");
+            File output = new File("models" + File.separator + "ner-custom-all-tags.bin");
             FileOutputStream outputStream = new FileOutputStream(output);
             nameFinderModel.serialize(outputStream);
         }
