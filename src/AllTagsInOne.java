@@ -73,7 +73,7 @@ public class AllTagsInOne {
     }
     
     //////////////////////////////////
-    //{ "apartment", "under", "1000000/1cr", "having", "3", "bedroom", "in", "Mumbai" , "by", "broker"}
+    //{ "apartment", "under", "1000000/1cr", "having", "3", "bhk", "in", "Mumbai" , "by", "broker"}
     public static String type3CityQuery(String locality, String bhk, String city, String propertyType, String price, String postedBy) {
         StringBuilder text = new StringBuilder();
 
@@ -123,7 +123,6 @@ public class AllTagsInOne {
     public static void main(String[] args) {
 
         List<String> localityList = new ArrayList<>();
-
         localityList.add("Kharghar");
         localityList.add("Thane West");
         localityList.add("Chembur");
@@ -182,25 +181,28 @@ public class AllTagsInOne {
         List<String> propertyTypeList = new ArrayList<>();
         propertyTypeList.add("villa");
         propertyTypeList.add("apartment");
-        propertyTypeList.add("Builder Floor");
+        propertyTypeList.add("builder floor");
+        propertyTypeList.add("independent house");
+        propertyTypeList.add("plot");
 
         List<String> bhkList = new ArrayList<>();
-
         bhkList.add("1BHK");
         bhkList.add("1 BHK");
-        bhkList.add("2BHK");
-        bhkList.add("2 BHK");
+        bhkList.add("2bhk");
+        bhkList.add("2 bhk");
         bhkList.add("3BHK");
         bhkList.add("3 BHK");
+        bhkList.add("4bhk");
+        bhkList.add("4 bhk");
 
         List<String> postedByList = new ArrayList<>();
-
         postedByList.add("owner");
 
-        List<Integer> buyList = new ArrayList<>();
+//        List<String> buyList = new ArrayList<>();
+//        buyList.add("rent");
+//        buyList.add("buy");
         
         List<String> priceList = new ArrayList<>();
-
         priceList.add("under 1 cr");
         priceList.add("under 1.1 cr");
         priceList.add("under 1.2 cr");
@@ -222,6 +224,10 @@ public class AllTagsInOne {
         priceList.add("under 2.8 cr");
         priceList.add("under 2.9 cr");
         priceList.add("under 3 cr");
+
+//        List<String> furnishTypeList = new ArrayList<>();
+//        furnishTypeList.add("furnished");
+//        furnishTypeList.add("unfurnished");
 
         FileWriter fw = null;
         BufferedWriter bw = null;

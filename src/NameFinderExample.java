@@ -92,7 +92,7 @@ public class NameFinderExample {
      * @throws IOException
      */
     public void findLocation() throws IOException {
-        InputStream is = new FileInputStream("models" + File.separator + "en-ner-location.bin");
+        InputStream is = new FileInputStream("models" + File.separator + "ner-custom-all-tags.bin");
 
         // load the model from file
         TokenNameFinderModel model = new TokenNameFinderModel(is);
@@ -102,8 +102,8 @@ public class NameFinderExample {
         NameFinderME nameFinder = new NameFinderME(model);
 
         // input string array
-        String[] sentence =
-                new String[] { "3", "BHK", "apartment", "under", "10000", "in", "Delhi" };
+        //String[] sentence = new String[] { "3", "BHK", "apartment", "under", "10000", "in", "Delhi", "by" ,"owner" };
+        String[] sentence = new String[] { "apartment", "under", "1000000", "having", "3", "bhk", "in", "Mumbai", "by" ,"owner" };
 
         Span nameSpans[] = nameFinder.find(sentence);
 
