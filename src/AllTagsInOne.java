@@ -12,8 +12,8 @@ public class AllTagsInOne {
     private static final String CITY_FILTER          = "<START:COLUMBUS> ";
     private static final String PROPERTY_TYPE_FILTER = "<START:PROPERTY_TYPE> ";
     private static final String PRICE_FILTER         = "<START:PRICE> ";
-    private static final String FILENAME             = "/Users/user/temp/trainingDataSet.txt";
-    private static final String POSTEDBY_FILTER            = "<START:POSTEDBY> ";
+    private static final String FILENAME             = "/home/anmol/trainingDataSet2.txt";
+    private static final String POSTEDBY_FILTER      = "<START:POSTEDBY> ";
     private static final String LISTING_TYPE_FILTER  = "<START:LISTINGTYPE> ";
     private static final String SORT_ORDER_FILTER    = "<START:SORTORDER> ";
     
@@ -131,6 +131,18 @@ public class AllTagsInOne {
         addFilter(LOCALITY_FILTER, locality, text);
         return text.toString();
     }
+    
+    private static String bhkPropertyForListingTypeInLocality(String bhk, String locality, String listingType, String property) {
+        StringBuilder text = new StringBuilder();
+        addFilter(BHK_FILTER, bhk, text);
+        addFilter(PROPERTY_TYPE_FILTER, property, text);
+        text.append(" for ");
+        addFilter(LISTING_TYPE_FILTER, listingType, text);
+        text.append(" in ");
+        addFilter(LOCALITY_FILTER, locality, text);
+        return text.toString();
+    }
+    
 
     private static String sortOrderPropertyInLocality(String locality, String property, String sortO) {
         StringBuilder text = new StringBuilder();
@@ -239,7 +251,7 @@ public class AllTagsInOne {
         priceList.add("under 1.7 cr");
         priceList.add("under 1.8cr");
         priceList.add("under 1.9 cr");
-        priceList.add("under 2 cr");
+        priceList.add("under 2cr");
         priceList.add("under 2.1 cr");
         priceList.add("under 2.2 cr");
         priceList.add("under 2.3 cr");
@@ -284,6 +296,8 @@ public class AllTagsInOne {
             }
 
             for (String locality : localityList) {
+                
+                
                 for (String bhk : bhkList) {
                     for (String city : cityList) {
                         for (String property : propertyTypeList) {
@@ -299,19 +313,19 @@ public class AllTagsInOne {
                                 }
                                 
                             }
-
-
+                            for (String listingType : listingTypesList) {
+                                writeInFile(bhkPropertyForListingTypeInLocality(bhk, locality, listingType, property), bw);
+                            }
                         }
+                       
+                        
                     }
                     for (String listingType : listingTypesList) {
                         writeInFile(bhkForListingTypeInLocality(bhk, locality, listingType), bw);
                     }
                 }
-
-                
-               
-                
             }
+            System.out.println("\n done");
         }
         catch (IOException e) {
             // TODO Auto-generated catch block
@@ -351,7 +365,6 @@ public class AllTagsInOne {
         try {
             bw.write(content);
             bw.write("\n");
-            System.out.println("\n done");
             
 
         }
